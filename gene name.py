@@ -14,10 +14,10 @@ def get_gene_name_from_refseq(refseq_id):
     return records[0]['GBSeq_definition']
 
 # Load your data
-data = pd.read_csv('output/RAREdar_Results.txt', sep='\t')  # adjust the file name and separator to match your file
+data = pd.read_csv('RAREdar_Results.txt', sep='\t')  # adjust the file name and separator to match your file
 
 # Extract the column with RefSeq IDs. Replace 'column_name' with the name of your column
-raw_data = data['column_name']
+raw_data = data['Gene']
 
 N = 21
 
