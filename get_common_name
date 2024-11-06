@@ -1,0 +1,54 @@
+import re
+
+infile = open("gene_names_with_counts.txt")
+lines = infile.readlines()
+
+outpredicted = open("predicted_gene_names.txt", 'w')
+outknown = open("known_gene_names.txt", 'w')
+
+for s in lines:
+    #print(s)
+    x = re.search('PREDICTED',s)
+
+    if x:
+      pred = True
+    else:
+      pred = False
+
+    #match_str = x.group(0)
+    #print(match_str)
+
+## this searches for PREDICTED.
+    x = re.search('\([0-9A-Za-z\:\-\.\/\_]*\),',s)
+    #print('full line', s)
+    #if x:
+    #    pass
+    #else:
+    #    print('missing')
+
+    match_str = x.group(0)
+    #print('match_string', match_str)
+
+    name = match_str[1:len(match_str)-2]
+    print('name_pred',name,pred)
+
+    if pred == True:
+       outpredicted.write(name + '\n') 
+    else:
+       outknown.write(name + '\n')
+outpredicted.close()
+outknown.close()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
